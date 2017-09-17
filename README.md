@@ -1,6 +1,6 @@
-docker-compose run web rails new . --force --database=postgresql
+$ docker-compose run web rails new . --force --database=postgresql
 
-docker-compose build
+$ docker-compose build
 
 Replace the contents of config/database.yml with the following:
 
@@ -26,18 +26,27 @@ production:
   database: app_production
 
 
-  docker-compose run web rake db:create
+$ docker-compose run web rake db:create
 
 
 To restart the application:
 
-Run docker-compose up in the project directory.
-Run this command in another terminal to restart the database: docker-compose run web rake db:create
+Run 
 
-If you make changes to the Gemfile or the Compose file to try out some different configurations, you will need to rebuild. Some changes will require only docker-compose up --build, but a full rebuild requires a re-run of 
+$ docker-compose up 
 
-docker-compose run web bundle install 
+in the project directory.
+Run this command in another terminal to restart the database: 
+
+$ docker-compose run web rake db:create
+
+If you make changes to the Gemfile or the Compose file to try out some different configurations, you will need to rebuild. Some changes will require only 
+$ docker-compose up --build
+
+a full rebuild requires a re-run of 
+
+$ docker-compose run web bundle install 
 
 to sync changes in the Gemfile.lock to the host, followed by 
 
-docker-compose up --build
+$ docker-compose up --build
